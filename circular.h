@@ -178,6 +178,7 @@ void circular::add_first(std::string dato)
         this->first->setBefore(n);
         this->first = n;
         this->first->setBefore(this->last); // aca seteo el puntero primer puntero para que apunte hacia el ultimo porque es circular
+        this->last->setNext(this->first); // aca seteo el puntero ultimo puntero para que apunte hacia el primeroo porque es circular
         this->size++;
     }
 }
@@ -194,7 +195,8 @@ void circular::add_last(std::string dato)
         this->last->setNext(n);
         n->setBefore(this->last);
         this->last = n;
-         this->last->setNext(this->first); // aca seteo el puntero ultimo puntero para que apunte hacia el primero porque es circular
+        this->last->setNext(this->first); // aca seteo el puntero ultimo puntero para que apunte hacia el primero porque es circular
+        this->first->setBefore(this->last); // aca seteo el puntero primer puntero para que apunte hacia el ultimo porque es circular
         this->size++;
     }
 }
@@ -263,8 +265,8 @@ void circular::remove_at(int index)
 {
         if(index >= 0 && index < this->size)
     {
-        if(index == 0){Nodo *aux = this->first->getNext();  aux->setBefore(0); this->first =aux;       this->size--;    return;}
-        if(index == this->size-1) {Nodo *aux = this->last->getBefore();  aux->setNext(0);        this->size--;             return;}
+        if(index == 0){Nodo *aux = this->first->getNext();  aux->setBefore(this->last); this->first =aux;       this->size--;    return;}
+        if(index == this->size-1) {Nodo *aux = this->last->getBefore();  aux->setNext(this->first); this->last=aux;       this->size--;             return;}
         Nodo *aux = this->first;
         int x = 0;
         while(aux!=0)

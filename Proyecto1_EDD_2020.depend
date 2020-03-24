@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1585085213 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
+1585085524 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
 	<iostream>
 	"json.hpp"
 	"listadoble.h"
+	"circular.h"
 
 1585077743 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\json.hpp
 	<algorithm>
@@ -172,7 +173,11 @@
 	<limits>
 	<type_traits>
 
-1585085467 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
+1585089423 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
+	<string.h>
+	<fstream>
+
+1585089690 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\circular.h
 	<string.h>
 	<fstream>
 
