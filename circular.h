@@ -47,6 +47,7 @@ class circular
          void add_last(std::string dato);
          void add_at(std::string dato, int index);
          void remove_at(int index);
+         void limpiar();
         std::string cantidad_artistas();
          std::string grafic();
          void generar_txt();
@@ -79,6 +80,23 @@ class circular
          Nodo *first;
          Nodo *last;
 };
+
+void circular::limpiar()
+{this->size=0;
+this->first =0;
+this->last=0;
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 void circular::add_ordenado(std::string dato)
