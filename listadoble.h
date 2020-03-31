@@ -52,6 +52,8 @@ class ListaDoble
          void generar_txt();
          std::string get_element_at(int index);
 
+         std::string lista_imprimir();
+
 
 
 
@@ -229,8 +231,34 @@ std::string ListaDoble::get_element_at(int index)
             x++;
         }
     }
-    return 0;
+    return "";
 }
+
+
+std::string ListaDoble::lista_imprimir()
+{
+   std::string result="";
+        Nodo *iterador = this->first;
+        int x = 0;
+        while(iterador!=0)
+        {
+            result =result+ iterador->getDato()+" --";
+            iterador = iterador->getNext();
+            x++;
+        }
+
+    return result;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 std::string ListaDoble::cantidad_artistas()
@@ -304,6 +332,25 @@ std::string ListaDoble::grafic()
         return grafo;
 
 }
+
+
+void ListaDoble::generar_txt(){
+std::string texto= grafic();
+std::ofstream archivo;
+archivo.open("listaDoble.txt", std::ios:: out);
+
+archivo<<texto;
+archivo.close();
+
+        std::string sentencia="dot -Tpng listaDoble.txt -o listaDoble.png";
+        std::string sentencia2="start listaDoble.png";
+        std::string salir="EXIT";
+        system(sentencia.c_str());
+        system(sentencia2.c_str());
+        system(salir.c_str());
+
+
+};
 
 
 
