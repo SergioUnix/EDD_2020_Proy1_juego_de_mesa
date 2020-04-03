@@ -150,11 +150,13 @@ do{
                                 cout<<"Coordenada Letra :";
                                 cin>>caracter;    car=caracter; cout<<"\n\n";
 
-                                if(Lista_jugador1->existC(car)==false){cout<<"Caracter no existe en la cola ";  opcion=2; break; } // si no ingresa un caracter que tiene en la lista doble se sale
-
+                                if(Lista_jugador1->existC(car)==false){cout<<"Caracter no existe en la cola \n\n";  opcion=2; break; } // si no ingresa un caracter que tiene en la lista doble se sale
+                                tablero->insertar_elemento(corX,corY,car,Nombre1);//ingreso caracter a la matriz
+                                tablero->generar_txt();  //grafico la matriz
+                                Lista_jugador1->removeC(car);
                                 numero--;corX=-1; corY=-1;
                                 }
-                        }
+                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n";}
 
 
              opcion=2;
@@ -183,11 +185,13 @@ do{
                                 cout<<"Coordenada Letra :";
                                 cin>>caracter;  car2=caracter;cout<<"\n\n";
 
-                                if(Lista_jugador2->existC(car2)==false){cout<<"Caracter no existe en la cola "; opcion=1; break; } // si no ingresa un caracter que tiene en la lista
-
+                                if(Lista_jugador2->existC(car2)==false){cout<<"Caracter no existe en la cola \n\n"; opcion=1; break; } // si no ingresa un caracter que tiene en la lista
+                                tablero->insertar_elemento(corX,corY,car2,Nombre2);//ingreso caracter a la matriz
+                                tablero->generar_txt();  //grafico la matriz
+                                Lista_jugador2->removeC(car2);
                                 numero--;corX=-1; corY=-1;
                                 }
-                        }
+                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n";}
 
             corX=-1; corY=-1;
             opcion=1;

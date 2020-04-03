@@ -47,7 +47,9 @@ class ListaDoble
          void add_last(std::string dato);
          void add_at(std::string dato, int index);
          void remove_at(int index);
-        std::string cantidad_artistas();
+         void removeC(std::string cadena);
+
+         std::string cantidad_artistas();
          std::string grafic();
          void generar_txt();
          std::string get_element_at(int index);
@@ -236,6 +238,9 @@ std::string ListaDoble::get_element_at(int index)
 }
 
 
+
+
+
 std::string ListaDoble::lista_imprimir()
 {
    std::string result="";
@@ -319,6 +324,38 @@ void ListaDoble::remove_at(int index)
 
     // return 0;
 }
+
+
+
+
+////REmover atravez de un string dado
+void ListaDoble::removeC(std::string cadena)
+{
+
+        Nodo *iterador = this->first;
+        int x = 0;
+        while(iterador!=0)
+        {
+            if(iterador->getDato() == cadena){remove_at(x); break;}
+
+            iterador = iterador->getNext();
+            x++;
+        }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 std::string ListaDoble::grafic()
 {
