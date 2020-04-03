@@ -2,7 +2,7 @@
 #define CUBO_H_INCLUDED
 
 
-#include "listasimple.h"
+#include "usuarios.h"
 
 
 template<class T>
@@ -23,7 +23,7 @@ class Cubo
             this->y=posy;
             this->dato = x;
             ////inicializo mi lista
-            this->canciones=0;
+            this->usuarios=0;
          }
 
         Nodo *getNext(){ return next;}
@@ -49,15 +49,13 @@ class Cubo
         //void setY(int y){ y = y;}
         T getDato(){ return dato;}
 
-        void setLista(Lista* list){canciones=list;}
-        Lista* getLista(){return canciones;}
 
 
-        void agregarDatosLista(std::string cadena){
+        void setLista(User* list){usuarios=list;}
+        User* getLista(){return usuarios;}
 
-            canciones->add_ordenado(cadena);
-
-        }
+        void agregarDatosLista(std::string dato,std::string corX,std::string corY,std::string nombre){
+            usuarios->add_ordenado(dato,corX,corY,nombre);      }
 
 
 
@@ -81,7 +79,7 @@ class Cubo
         Nodo *z_front; Nodo *z_back;
         int x;    int y;
         T dato;
-        Lista *canciones;
+        User *usuarios;
     };
 
 
@@ -98,67 +96,8 @@ class Cubo
 
 
 
-Lista*  buscar_lista(std::string cadena)
-{
-
-        Nodo *iterador = this->root;
-        Nodo *iterador2=iterador;
-        while(iterador!=0)
-        {
-
-                    while(iterador2!=0){
-
-                        if(iterador2->getDato()==cadena){
-                            break;
-                        }
 
 
-                        iterador2=iterador2->getDown();
-
-
-                    }
-
-
-
-
-            iterador = iterador->getNext();
-        }
-
-        return iterador2->getLista();
-
-}
-
-
-void  agregar_alista(std::string cadena,std::string cancion)
-{
-
-        Nodo *iterador = this->root;
-        Nodo *iterador2=iterador;
-        Nodo *solucion;
-        while(iterador!=0)
-        {
-
-                    while(iterador2!=0){
-
-                        if(iterador2->getDato()==cadena){
-                                iterador2=solucion; break;
-                        }
-
-
-                        iterador2=iterador2->getDown();
-
-
-                    }
-
-
-
-
-            iterador = iterador->getNext();
-        }
-
-       solucion->agregarDatosLista(cancion);
-
-}
 
 
 
@@ -282,12 +221,12 @@ void  agregar_alista(std::string cadena,std::string cancion)
 
        Nodo* crear_fila(int y){
            std::string mes="";
-           if(y==1){mes="Enero";}else if(y==2){mes="Febrero";}else if(y==3){mes="Marzo";}else if(y==4){mes="Abril";}else if(y==5){mes="Mayo";}
-           else if(y==6){mes="Junio";}else if(y==7){mes="Julio";}else if(y==8){mes="Agosto";}else if(y==9){mes="Septiembre";}else if(y==10){mes="Octubre";}
-           else if(y==11){mes="Noviembre";}else if(y==12){mes="Diciembre";}
+          // if(y==1){mes="Enero";}else if(y==2){mes="Febrero";}else if(y==3){mes="Marzo";}else if(y==4){mes="Abril";}else if(y==5){mes="Mayo";}
+           //else if(y==6){mes="Junio";}else if(y==7){mes="Julio";}else if(y==8){mes="Agosto";}else if(y==9){mes="Septiembre";}else if(y==10){mes="Octubre";}
+           //else if(y==11){mes="Noviembre";}else if(y==12){mes="Diciembre";}
 
            Nodo* cabeza_fila = this->root;
-           Nodo* fila = this->insertar_ordenado_fila(new Nodo(-1,y,mes), cabeza_fila );
+           Nodo* fila = this->insertar_ordenado_fila(new Nodo(-1,y,std::to_string(y)), cabeza_fila );
 
            return fila;
        }
@@ -330,7 +269,7 @@ void  agregar_alista(std::string cadena,std::string cancion)
 
 
 
-void  insertar_elemento(int x, int y, std::string dato){
+void  insertar_elemento(int x, int y, std::string dato,std::string jugador){
         Nodo * nuevo= new Nodo(x,y,dato);
         Nodo* NodoColumna = this->buscar_columna(x);
         Nodo* NodoFila =this->buscar_fila(y);
@@ -378,7 +317,7 @@ void  insertar_elemento(int x, int y, std::string dato){
 std::string grafic(){
     std::string linea1="digraph Sparce_Matrix { \n";
     std::string linea2="node [shape=box]  \n";
-    std::string linea3="Mt[ label = \"Matrix\", width = 1.5, style = filled, fillcolor = firebrick1, group = 1 ];  \n";
+    std::string linea3="Mt[ label = \"Raiz\", width = 1.5, style = filled, fillcolor = darkolivegreen3, group = 1 ];  \n";
     std::string linea4="/*nodos vacíos, necesarios para anular la ubicación de nodo predeterminada de graphiz  */ \n e0[ shape = point, width = 0 ];  \n";
     std::string linea5="e1[ shape = point, width = 0 ];   \n";
 
@@ -409,13 +348,13 @@ std::string grafic(){
                 {
                     recoX= temp1->getNext();
                     while(recoX!=0){
-                        if(comodin_fila<0){   punteros_fila=punteros_fila+ "U"+std::to_string(temp1->getY())+ "-> N"+std::to_string(recoX->getX())+std::to_string(recoX->getY())+"; \n";  same=same+ "U"+std::to_string(temp1->getY())+";";     comodin_fila +=1;}
+                        if(comodin_fila<0){   punteros_fila=punteros_fila+ "U"+std::to_string(temp1->getY())+ "-> N"+std::to_string(recoX->getX())+std::to_string(recoX->getY())+"[dir=\"both\"]; \n";  same=same+ "U"+std::to_string(temp1->getY())+";";     comodin_fila +=1;}
 
                         if(recoX!=0){
                                filas= filas + "N"+ std::to_string(recoX->getX())+std::to_string(recoX->getY())+" [label = \""+recoX->getDato()+"\" width = 1.5, group ="+ std::to_string(recoX->getX()) +" ];  \n";
                                   same=same+ "N"+ std::to_string(recoX->getX())+std::to_string(recoX->getY())+";";
                                             if(recoX->getUp()->getY()==-1){ //si es cabecera la de arriba hace esto
-                                            punteros_fila=punteros_fila + "A"+ std::to_string(recoX->getUp()->getX())+ "-> N"+std::to_string(recoX->getX())+std::to_string(recoX->getY()) +"; \n";
+                                            punteros_fila=punteros_fila + "A"+ std::to_string(recoX->getUp()->getX())+ "-> N"+std::to_string(recoX->getX())+std::to_string(recoX->getY()) +"[dir=\"both\"];\n";
                                             }else{ //cuando no es cabecera ejecuta esto
                                             punteros_fila=punteros_fila + "N"+ std::to_string(recoX->getX())+std::to_string(recoX->getY())+ "-> N"+std::to_string(recoX->getUp()->getX())+std::to_string(recoX->getUp()->getY()) +"; \n";
                                              punteros_fila=punteros_fila + "N"+ std::to_string(recoX->getUp()->getX())+std::to_string(recoX->getUp()->getY())+ "-> N"+std::to_string(recoX->getX())+std::to_string(recoX->getY()) +"; \n";
@@ -459,7 +398,7 @@ std::string grafic(){
 
                     }
 
-                linea6 = linea6 + "U"+ std::to_string(temp1->getY()) + "[label = \""+  temp1->getDato() +"\" width = 1.5 style = filled, fillcolor = bisque1, group ="+ "1" +"];  \n";
+                linea6 = linea6 + "U"+ std::to_string(temp1->getY()) + "[label = \""+  temp1->getDato() +"\" width = 1.5 style = filled, fillcolor = thistle2, group ="+ "1" +"];  \n";
                 if(temp1->getDown()!=0){
                 linea7=linea7 +"U"+std::to_string(temp1->getY())+ "-> U"+std::to_string(temp1->getDown()->getY())+"; \n" +"U"+std::to_string(temp1->getDown()->getY())+ "-> U"+std::to_string(temp1->getY())+"; \n";
 
@@ -496,7 +435,7 @@ std::string grafic(){
 
                     }
 
-                linea8 = linea8 + "A"+ std::to_string(temp->getX()) + "[label = \""+ std::to_string(temp->getX()) +"\" width = 1.5 style = filled, fillcolor = lightskyblue, group ="+ std::to_string(temp->getX()) +"];  \n";
+                linea8 = linea8 + "A"+ std::to_string(temp->getX()) + "[label = \""+ std::to_string(temp->getX()) +"\" width = 1.5 style = filled, fillcolor = turquoise3, group ="+ std::to_string(temp->getX()) +"];  \n";
                 if(temp->getNext()!=0){
                 linea9=linea9 +"A"+std::to_string(temp->getX())+ "-> A"+std::to_string(temp->getNext()->getX())+"; \n" +"A"+std::to_string(temp->getNext()->getX())+ "-> A"+std::to_string(temp->getX())+"; \n";}
                 para_linea11=para_linea11 + "A"+ std::to_string(temp->getX())+"; ";
@@ -507,7 +446,7 @@ std::string grafic(){
                 }
 
 
-    std::string linea10="Mt -> "+primeroY+"; Mt -> "+primeroX+"; \n";
+    std::string linea10="Mt -> "+primeroY+"[dir=\"both\"]; Mt -> "+primeroX+"[dir=\"both\"]; \n";
     std::string linea11="{ rank = same; Mt;"+ para_linea11 +"} \n";
 
 

@@ -29,14 +29,21 @@ auto jugadores = new BSTree<std::string>{}; //Arbol donde guardo los nombres de 
 Cola *fichas= new Cola();
 
 
+
 /////variables para un juego
 ListaDoble *Lista_jugador1= new ListaDoble();
 ListaDoble *Lista_jugador2= new ListaDoble();
 
+Cubo <string> *tablero= new Cubo<string>();  //tablero del juego
 
 
 
 void analizarDatos(string nombre_de_archivo) {
+
+//diccionario= new circular();
+//jugadores = new BSTree<std::string>{};
+//fichas= new Cola();
+
     diccionario->limpiar();
     std::ifstream file(nombre_de_archivo);
     file >> Juego;
@@ -85,11 +92,18 @@ void analizarDatos(string nombre_de_archivo) {
 
 
 void game(){
+Lista_jugador1= new ListaDoble();
+Lista_jugador2= new ListaDoble();
+tablero= new Cubo<string>();
+
 system("cls");
 Lista_jugador1=new ListaDoble(); Lista_jugador2=new ListaDoble(); string Nombre1=""; string Nombre2="";
 Cola *copia_fichas= new Cola();  copia_fichas=fichas;
-char nom[30],nom2[30],palabra1[33],palabra2[33];
-int opcion=1;
+char nom[30],nom2[30],palabra1[33],palabra2[33],cadena[333];
+char caracter[10];
+int opcion=1, numero=0, corX=-1, corY=-1;
+std:: string s=""; std::string car="";
+std:: string v=""; std::string car2 ="";
 
 while(true){
 cout<<" Seleccionar Jugadores "<<endl;
@@ -101,40 +115,86 @@ cin>>nom2;
 if(jugadores->search(nom)==true && jugadores->search(nom2)==true){ Nombre1=nom; Nombre2=nom2;
 for(int i=0;i<7;i++){
     Lista_jugador1->add_first(copia_fichas->extraer());
-  Lista_jugador2->add_first(copia_fichas->extraer());
+    Lista_jugador2->add_first(copia_fichas->extraer());
 }
  break; }
-system("pause"); system("cls");
+ system("cls");
 }
 
-cout<<"EL JUEGO EMPIEZA AHORA...."<<endl;
+cout<<"EL JUEGO EMPIEZA AHORA...."<<endl<<endl;
 system("pause");
- do{
+do{
 
 
         switch(opcion){
             case 1:  system("cls");
-            cout<<"Fichas Disponibles Jugador 1\n"<<endl;
-            cout<< Lista_jugador1->lista_imprimir()<<endl;
-            cout<<"Escribe letras a Ingresar\n"<<endl;
+            cout<<"JUGADOR  1 "<<Nombre1<<endl;
+            cout<<"Diccionario: ";
+            diccionario->lista_imprimir();
+            cout<<"Instrucciones:  Salir--\"salir\" Pasar de turno--\"pasar\"  "<<endl<<endl;
+            cout<<"Fichas Disponibles   :";
+            cout<< Lista_jugador1->lista_imprimir()<<endl<<endl;
+            //Lista_jugador1->generar_txt();
+            cout<<"\n\n Inserte la palabra que desea armar:  ";
             cin>>palabra1;
-            opcion=2;
+                        s=palabra1;
+                        if(s=="salir"){opcion=9;}else if(s=="pasar"){  opcion=2; break;}else{opcion=2;}
+                        if(diccionario->exist(palabra1)==true){
+                                cout<<"Numero de Letras que ingresara:  ";
+                                cin >>numero;
+                                while(numero>0){
+                                do{cout<<"Coordenada Y  :"; cin>>corY;       }while(((corY>0)!=true) || ((corY<21)!=true));
+                                do{cout<<"Coordenada X  :";  cin>>corX;      }while(((corY>0)!=true) || ((corY<21)!=true));
 
+                                cout<<std::to_string(corY)<<"imprimir"<<(corY<20)<<endl;
+                                cout<<"Coordenada Letra :";
+                                cin>>caracter;    car=caracter; cout<<"\n\n";
+
+                                if(Lista_jugador1->existC(car)==false){cout<<"Caracter no existe en la cola ";  opcion=2; break; } // si no ingresa un caracter que tiene en la lista doble se sale
+
+                                numero--;corX=-1; corY=-1;
+                                }
+                        }
+
+
+             opcion=2;
+            system("pause");
 
             break;
             case 2:  system("cls");
-            cout<<"Fichas Disponibles Jugador 2\n"<<endl;
-            cout<<Lista_jugador2->lista_imprimir()<<endl;
-            cout<<"Escribe letras a Ingresar\n"<<endl;
+            cout<<"JUGADOR  2 "<<Nombre2<<endl;
+            cout<<"Diccionario:" ;
+            diccionario->lista_imprimir();
+            cout<<"Instrucciones:  Salir--\"salir\" Pasar de turno--\"pasar\"  "<<endl<<endl;
+            cout<<"Fichas Disponibles   :";
+            cout<<Lista_jugador2->lista_imprimir();
+            //Lista_jugador2->generar_txt();
+            cout<<"\n\n Ingresar la palabra que desea armar: ";
             cin>>palabra2;
+
+                        v=palabra2;
+                        if(v=="salir"){opcion=9;}else if(v=="pasar"){ opcion=1; break;}else{opcion=1;}
+                        if(diccionario->exist(palabra2)==true){
+                                cout<<"Numero de Letras que ingresara:  ";
+                                cin >>numero;
+                                while(numero>0){
+                                do{cout<<"Coordenada Y  :";cin>>corY;    }while(((corY>0)!=true) || ((corY<21)!=true));
+                                do{cout<<"Coordenada X  :";cin>>corX;    }while(((corY>0)!=true) || ((corY<21)!=true));
+                                cout<<"Coordenada Letra :";
+                                cin>>caracter;  car2=caracter;cout<<"\n\n";
+
+                                if(Lista_jugador2->existC(car2)==false){cout<<"Caracter no existe en la cola "; opcion=1; break; } // si no ingresa un caracter que tiene en la lista
+
+                                numero--;corX=-1; corY=-1;
+                                }
+                        }
+
+            corX=-1; corY=-1;
             opcion=1;
-            break;
-            case 3:  system("cls");
+            system("pause");
 
             break;
-            case 4:  system("cls");
 
-            break;
         }
             }while(opcion!=9);
 
@@ -266,12 +326,8 @@ fichas->elementos_default(); //Ingreso fichas a la Cola
 
 
 
+
 menu();
-
-
-
-
-
 
 
 

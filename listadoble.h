@@ -53,6 +53,7 @@ class ListaDoble
          std::string get_element_at(int index);
 
          std::string lista_imprimir();
+         bool existC(std::string a);
 
 
 
@@ -250,6 +251,21 @@ std::string ListaDoble::lista_imprimir()
     return result;
 }
 
+bool ListaDoble::existC(std::string a){
+        bool result=false;
+        Nodo *auxiliar = this->first;
+        int x = 0;
+        while(auxiliar!=0)
+        {
+            if(a==auxiliar->getDato()){  result=true;   }
+
+            auxiliar = auxiliar->getNext();
+            x++;
+        }
+
+    return result;
+}
+
 
 
 
@@ -306,12 +322,12 @@ void ListaDoble::remove_at(int index)
 
 std::string ListaDoble::grafic()
 {
-        std::string linea1=" digraph G {";
-       std:: string linea2="nodesep=.02;";
-        std::string linea3="rankdir=LR;";
-        std::string linea4="node [shape=record,width=.1,height=.1];";
-        std::string linea5="node0 [label = \"null\"];";
-        std::string linea6="node [width =1.5];";
+        std::string linea1="digraph G {\n";
+       std:: string linea2="nodesep=.02;\n";
+        std::string linea3="rankdir=LR;\n";
+        std::string linea4="node [shape=record,width=.1,height=.1];\n";
+        std::string linea5="node [width =0.5 height=0.3];\n";
+        std::string linea6="node0[label = \"{null |<p>}\"   width = 1.5 style = filled, fillcolor = turquoise3         ];\n";
 
         Nodo *node = this->first;
         //node =self.head
@@ -320,14 +336,15 @@ std::string ListaDoble::grafic()
         std::string direccion="";
 
         while(node!=0){
-         nodos=nodos+ "node"+std::to_string(index) +"[label = \"{<n> |" + node->getDato() +"| <p> }\"];";
-         direccion=direccion+"node" + std::to_string(index)+":n -> node"+std::to_string(index-1)+":p;";
-         direccion=direccion+"node"+std::to_string(index)+":p -> node"+std::to_string(index+1)+":n;" ;
+         nodos=nodos+ "node"+std::to_string(index) +"[label = \"{<n> |" + node->getDato() +"| <p> }\"  width = 1.5 style = filled, fillcolor = turquoise3     ];\n";
+         direccion=direccion+"node" + std::to_string(index)+":n -> node"+std::to_string(index-1)+":p;\n";
+         direccion=direccion+"node"+std::to_string(index)+":p -> node"+std::to_string(index+1)+":n;\n" ;
          index=index+ 1;
          node=node->getNext();
         }
-        nodos =nodos+"node"+std::to_string(index) + "[label = \"null\",width=0.5];";
-        std::string lineafinal="}";
+        nodos =nodos+"node"+std::to_string(index) + "[label = \"{<n> null }\"  width = 1.5 style = filled, fillcolor = turquoise3   ];\n";
+        std::string lineafinal="}\n";
+        direccion="node0 ->node1:n;\n"+direccion;
         std::string grafo= linea1+linea2+linea3+linea4+linea5+linea6+nodos+direccion+lineafinal;
         return grafo;
 

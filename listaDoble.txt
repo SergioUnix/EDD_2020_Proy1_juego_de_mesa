@@ -1,0 +1,30 @@
+digraph G {
+nodesep=.02;
+rankdir=LR;
+node [shape=record,width=.1,height=.1];
+node [width =0.5 height=0.3];
+node0[label = "{null |<p>}"   width = 1.5 style = filled, fillcolor = turquoise3         ];
+node1[label = "{<n> |A| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node2[label = "{<n> |U| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node3[label = "{<n> |L| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node4[label = "{<n> |O| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node5[label = "{<n> |I| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node6[label = "{<n> |D| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node7[label = "{<n> |O| <p> }"  width = 1.5 style = filled, fillcolor = turquoise3     ];
+node8[label = "{<n> null }"  width = 1.5 style = filled, fillcolor = turquoise3   ];
+node0 ->node1:n;
+node1:n -> node0:p;
+node1:p -> node2:n;
+node2:n -> node1:p;
+node2:p -> node3:n;
+node3:n -> node2:p;
+node3:p -> node4:n;
+node4:n -> node3:p;
+node4:p -> node5:n;
+node5:n -> node4:p;
+node5:p -> node6:n;
+node6:n -> node5:p;
+node6:p -> node7:n;
+node7:n -> node6:p;
+node7:p -> node8:n;
+}

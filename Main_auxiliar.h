@@ -52,6 +52,16 @@ lista->add_ordenado("Eduardo");
 lista->add_ordenado("Rodrigo");
 //lista->generar_txt();  //genero txxt y muestro imagen en ghrapviz
 
+cout<<"1. Lista Doblemente Enlazada Circular: Diccionario "<<endl;
+
+Cubo <string> *cpu= new Cubo<string>();
+cpu->insertar_elemento(20,8,"C","Jugador1");
+cpu->insertar_elemento(3,7,"P","jugador2");
+cpu->insertar_elemento(1,5,"S","jugador2");
+cpu->insertar_elemento(2,6,"U","jugador1");
+cpu->generar_txt();
+
+
 
 
 #endif // MAIN_AUXILIAR_H_INCLUDED

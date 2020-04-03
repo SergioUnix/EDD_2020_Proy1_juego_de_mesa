@@ -28,6 +28,8 @@ public:
     void elementos_default();
     std::string  grafic();
 	void generar_txt();
+	bool exist(string cadena);
+	int valor(string cadena);
 
 
 };
@@ -102,6 +104,30 @@ void Cola::imprimir()
     cout << "\n";
 }
 
+///// Busco el dato dentro de la cola
+bool Cola::exist(string cadena)
+{ bool result=false;
+    Nodo *aux = raiz;
+    while (aux != NULL)
+    {
+      if(cadena==aux->letra){result=true;}
+        aux = aux->sig;
+    }
+    return result;
+}
+////////////devuelve el valor de la letra ingresada
+int Cola::valor(string cadena)
+{ int t=NULL;
+    Nodo *aux = raiz;
+    while (aux != NULL)
+    {
+      if(cadena==aux->letra){t=aux->info;}
+        aux = aux->sig;
+    }
+    return t;
+}
+
+
 bool Cola::vacia()
 {
     if (raiz == NULL)
@@ -111,7 +137,9 @@ bool Cola::vacia()
 }
 void Cola::elementos_default()
 {
-     string cadena="ALOTGCDEIBOCNAORDEIEOFLGUIANSEÑHOMADRHTIICEJRLSUIONRALMEASNOAEDOPSNUOECQARTSEOBPUSTUESAVEEADXAYZA";
+    // string cadena="ALOTGCDEIBOCNAORDEIEOFLGUIANSEÑHOMADRHTIICEJRLSUIONRALMEASNOAEDOPSNUOECQARTSEOBPUSTUESAVEEADXAYZA";
+     //string cadena="alotgcdeibocnaordeieoflguianse;homadrhtiicejrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
+     string cadena="osoalotosogcdesodaibocsodanaoraguadeieaaguaoflguiansehomadrhtiicejrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
      int n1 = cadena.length();
      char char_a[n1 + 1];
      strcpy(char_a, cadena.c_str());
@@ -120,13 +148,13 @@ void Cola::elementos_default()
   for (int i = 0; i < cadena.size(); i++){
     aux=cadena[i];
 
-    if(cadena[i]=='A'||cadena[i]=='E'||cadena[i]=='O'||cadena[i]=='I'||cadena[i]=='S'||cadena[i]=='N'||cadena[i]=='L'||cadena[i]=='R'||cadena[i]=='U'||cadena[i]=='T'){ insertar(1,aux);  }
-    if(cadena[i]=='D'||cadena[i]=='G'){ insertar(2,aux);  }
-    if(cadena[i]=='C'||cadena[i]=='B'||cadena[i]=='M'||cadena[i]=='P'){ insertar(3,aux);  }
-    if(cadena[i]=='H'||cadena[i]=='F'||cadena[i]=='V'||cadena[i]=='Y'){ insertar(4,aux);  }
-    if(cadena[i]=='Q'){ insertar(5,aux);  }
-    if(cadena[i]=='J'||cadena[i]=='Ñ'||cadena[i]=='X'){ insertar(8,aux);  }
-    if(cadena[i]=='Z'){ insertar(10,aux);  }
+    if(cadena[i]=='a'||cadena[i]=='e'||cadena[i]=='o'||cadena[i]=='i'||cadena[i]=='s'||cadena[i]=='n'||cadena[i]=='l'||cadena[i]=='r'||cadena[i]=='u'||cadena[i]=='t'){ insertar(1,aux);  }
+    if(cadena[i]=='d'||cadena[i]=='g'){ insertar(2,aux);  }
+    if(cadena[i]=='c'||cadena[i]=='b'||cadena[i]=='m'||cadena[i]=='p'){ insertar(3,aux);  }
+    if(cadena[i]=='h'||cadena[i]=='f'||cadena[i]=='v'||cadena[i]=='y'){ insertar(4,aux);  }
+    if(cadena[i]=='q'){ insertar(5,aux);  }
+    if(cadena[i]=='j'||cadena[i]=='ñ'||cadena[i]=='x'){ insertar(8,aux);  }
+    if(cadena[i]=='z'){ insertar(10,aux);  }
 
      }
 

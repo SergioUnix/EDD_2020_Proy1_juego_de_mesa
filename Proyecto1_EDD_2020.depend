@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1585633473 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
+1585891570 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
 	<iostream>
 	"json.hpp"
 	"listadoble.h"
@@ -179,15 +179,15 @@
 	<limits>
 	<type_traits>
 
-1585632343 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
+1585874569 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
 	<string.h>
 	<fstream>
 
-1585601146 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\circular.h
+1585728369 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\circular.h
 	<string.h>
 	<fstream>
 
-1585555844 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
+1585720611 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
 
 1585609837 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\arbol.h
 	"listasimple.h"
@@ -199,6 +199,8 @@
 
 1585440176 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listasimple.h
 
-1585547673 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cubo.h
-	"listasimple.h"
+1585877971 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cubo.h
+	"usuarios.h"
+
+1585877828 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\usuarios.h
 

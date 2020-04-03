@@ -48,11 +48,11 @@ class circular
          void add_at(std::string dato, int index);
          void remove_at(int index);
          void limpiar();
-        std::string cantidad_artistas();
+         bool exist(std::string cadena);
          std::string grafic();
          void generar_txt();
          std::string get_element_at(int index);
-
+         void lista_imprimir();
 
 
 
@@ -268,17 +268,30 @@ for(int k=0;k <this->size;k++){
 }
 
 
-std::string circular::cantidad_artistas()
-{
-    std::string result;
+void circular::lista_imprimir()
+{  std::string result;
+    for(int j=0;j<this->size-1;j++){
+        result = result+get_element_at(j) + "  --  ";
+    }
+std::cout<<result<<std::endl;
 
-        Nodo *iterador = this->first;
+}
+
+
+
+/////verifica si existe la cadena dentro de la estructura
+bool circular::exist(std::string cadena)
+{
+    bool result=false;
+
+        Nodo *node = this->first;
         int x = 1;
-        while(iterador!=0)
+        while(true)
         {
-            result = result +std::to_string(x)+ "."+iterador->getDato()+" \n";
-            iterador = iterador->getNext();
+           if(cadena==node->getDato()){result =true;}
             x++;
+         if(node->getNext()==this->first||node->getNext()==0){break;}
+         node=node->getNext();
         }
 
     return result;

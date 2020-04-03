@@ -4,8 +4,10 @@ node [shape = record, style=filled, fillcolor=seashell2];
 Ariel[ label ="<C0>|Ariel|<C1>"]; 
 Juan[ label ="<C0>|Juan|<C1>"]; 
 Madelyn[ label ="<C0>|Madelyn|<C1>"]; 
+WAWA[ label ="<C0>|WAWA|<C1>"]; 
 zorro[ label ="<C0>|zorro|<C1>"]; 
 zorro:C0->Ariel
 Madelyn:C0->Juan
 Ariel:C1->Madelyn
+Madelyn:C1->WAWA
 } 
