@@ -8,10 +8,11 @@ class User
 {
     class Nodo{
     public:
-        Nodo(std::string dat, std::string x,std::string y,std::string nom)
+        Nodo(std::string dat, int x,int y,std::string nom,int val)
         {
             next = 0;
             dato = dat;
+            valor_dato=val;
             corX=x;
             corY=y;
             nombre=nom;
@@ -19,22 +20,34 @@ class User
 
         }
 
+
         Nodo *getNext(){ return next;}
         void setNext(Nodo *n) { next = n;}
         std::string getDato(){ return dato;}
+        int getCorX(){return corX;}
+        int getCorY(){return corY;}
+        int getValor(){return valor_dato;}
+        std::string getNombre(){return nombre;}
+        void setValor(int a){valor_dato=a;}
+
+
+
+
+
 
 void print()
 {
     //cout << "Node-> " << "Dato: " << dato << " Direcion: " << this << " Siguiente: " << next << endl;
-    std::cout << dato<< "-> ";}
+    std::cout << "- "<< dato<<std::to_string(corX)<<std::to_string(corY)<<nombre <<" -";}
 
 Nodo *next;
 
      private:
 
         std::string dato;
-         std::string corX;
-          std::string corY;
+        int valor_dato;
+         int corX;
+          int corY;
            std::string nombre;
 
     };
@@ -47,10 +60,18 @@ Nodo *next;
          }
 
          int getSize(){return size;}
-         void add_ordenado(std::string dato, std::string corX,std::string corY,std::string nombre);
-         void add_first(std::string dato, std::string corX,std::string corY,std::string nombre);
-         void add_last(std::string dato, std::string corX,std::string corY,std::string nombre);
+         void add_ordenado(std::string dato, int corX,int corY,std::string nombre);
+         void add_first(std::string dato, int corX,int corY,std::string nombre);
+         void add_last(std::string dato, int corX,int corY,std::string nombre);
          void remove_at(int index);
+
+
+         void mulDobles(int x, int y);
+         void mulTriples(int x, int y);
+         int punteoTotal(std::string jugador);
+
+
+
 
 
 
@@ -101,9 +122,23 @@ void print()
 
 
 
-void User::add_first(std::string dato,std::string corX,std::string corY,std::string nombre)
-{
-    Nodo *n = new Nodo(dato,corX,corY,nombre);
+void User::add_first(std::string dato,int corX,int corY,std::string nombre)
+{ int val=0;
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
+    if(dato=="d"||dato=="g"){ val=2;  }
+    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
+    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
+    if(dato=="q"){ val=5;  }
+    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
+    if(dato=="z"){ val=10;  }
+
+
+
+
+
+
+
+    Nodo *n = new Nodo(dato,corX,corY,nombre,val);
     if(this->isEmpty())
     {
         this->first = n;
@@ -122,9 +157,18 @@ void User::add_first(std::string dato,std::string corX,std::string corY,std::str
 
 
 
-void User::add_last(std::string dato,std::string corX,std::string corY,std::string nombre)
-{
-    Nodo *n = new Nodo(dato,corX,corY,nombre);
+void User::add_last(std::string dato,int corX,int corY,std::string nombre)
+{int val=0;
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
+    if(dato=="d"||dato=="g"){ val=2;  }
+    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
+    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
+    if(dato=="q"){ val=5;  }
+    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
+    if(dato=="z"){ val=10;  }
+
+
+    Nodo *n = new Nodo(dato,corX,corY,nombre, val);
     Nodo *aux=this->first;
     Nodo *aux_ant=0;
     bool bandera=false;
@@ -151,9 +195,98 @@ void User::add_last(std::string dato,std::string corX,std::string corY,std::stri
 
 
 
+void User::mulDobles(int x,int y)
+{
 
-void User::add_ordenado(std::string dato,std::string corX,std::string corY,std::string nombre)
-{ Nodo *n = new Nodo(dato,corX,corY,nombre);
+    Nodo *temp=this->first;
+    if (this->isEmpty()) {
+
+    } else {
+        while (temp) {
+
+         if(((x==temp->getCorX())==true)&&((y==temp->getCorY())==true)){
+            temp->setValor(temp->getValor()*2);
+            }
+
+
+
+         temp = temp->next;
+        }
+  }
+
+}
+
+void User::mulTriples(int x,int y)
+{
+
+    Nodo *temp=this->first;
+    if (this->isEmpty()) {
+
+    } else {
+        while (temp) {
+
+         if(((x==temp->getCorX())==true)&&((y==temp->getCorY())==true)){
+            temp->setValor(temp->getValor()*3);
+            }
+
+
+
+         temp = temp->next;
+        }
+  }
+
+
+
+}
+
+
+
+
+////  Obtener el punteo de cada jugador dado su nombre
+int User::punteoTotal(std::string jugador)
+{
+    int result=0;
+    Nodo *temp=this->first;
+    if (this->isEmpty()) {
+
+    } else {
+        while (temp) {
+
+         if((jugador==temp->getNombre())==true){
+             result=result+temp->getValor();
+
+            }
+
+
+
+         temp = temp->next;
+        }
+  }
+  return result;
+}
+
+
+
+
+
+
+
+
+
+
+
+void User::add_ordenado(std::string dato,int corX,int corY,std::string nombre)
+{int val=0;
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
+    if(dato=="d"||dato=="g"){ val=2;  }
+    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
+    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
+    if(dato=="q"){ val=5;  }
+    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
+    if(dato=="z"){ val=10;  }
+
+
+     Nodo *n = new Nodo(dato,corX,corY,nombre,val);
     Nodo *aux=this->first;
     Nodo *aux_ant=0;
     bool bandera=false;

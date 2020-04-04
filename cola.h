@@ -30,6 +30,7 @@ public:
 	void generar_txt();
 	bool exist(string cadena);
 	int valor(string cadena);
+	int getSize();
 
 
 };
@@ -91,6 +92,25 @@ std::string Cola::extraer()
     else
         return "";
 }
+
+
+
+////tamano de la cola
+int Cola::getSize()
+{
+    int result=0;
+    Nodo *aux = raiz;
+
+    while (aux != NULL)
+    {
+        result++;
+        aux = aux->sig;
+    }
+    return result;
+}
+
+
+
 
 void Cola::imprimir()
 {

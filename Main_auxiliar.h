@@ -52,7 +52,15 @@ lista->add_ordenado("Eduardo");
 lista->add_ordenado("Rodrigo");
 //lista->generar_txt();  //genero txxt y muestro imagen en ghrapviz
 
-cout<<"1. Lista Doblemente Enlazada Circular: Diccionario "<<endl;
+cout<<"1. Lista Doblemente Enlazada Fichas del jugador "<<endl;
+ListaDoble *dic= new ListaDoble();
+dic->add_first("Arturo");
+dic->add_first("Jose");
+dic->add_first("Manuel");
+cout<<dic->lista_imprimir()<<endl;
+cout<<dic->getSize()<<endl;
+
+
 
 Cubo <string> *cpu= new Cubo<string>();
 cpu->insertar_elemento(20,8,"C","Jugador1");

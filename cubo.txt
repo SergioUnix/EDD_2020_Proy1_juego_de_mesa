@@ -5,39 +5,31 @@ Mt[ label = "Raiz", width = 1.5, style = filled, fillcolor = darkolivegreen3, gr
  e0[ shape = point, width = 0 ];  
 e1[ shape = point, width = 0 ];   
 U5[label = "5" width = 1.5 style = filled, fillcolor = thistle2, group =1];  
-A5[label = "5" width = 1.5 style = filled, fillcolor = turquoise3, group =5];  
-A6[label = "6" width = 1.5 style = filled, fillcolor = turquoise3, group =6];  
-A7[label = "7" width = 1.5 style = filled, fillcolor = turquoise3, group =7];  
-A8[label = "8" width = 1.5 style = filled, fillcolor = turquoise3, group =8];  
-A9[label = "9" width = 1.5 style = filled, fillcolor = turquoise3, group =9];  
-A5-> A6; 
-A6-> A5; 
-A6-> A7; 
-A7-> A6; 
-A7-> A8; 
-A8-> A7; 
-A8-> A9; 
-A9-> A8; 
-Mt -> U5[dir="both"]; Mt -> A5[dir="both"]; 
-{ rank = same; Mt;A5; A6; A7; A8; A9; } 
-N55 [label = "o" width = 1.5, group =5 ];  
-N65 [label = "s" width = 1.5, group =6 ];  
-N75 [label = "o" width = 1.5, group =7 ];  
-N85 [label = "s" width = 1.5, group =8 ];  
-N95 [label = "o" width = 1.5, group =9 ];  
-U5-> N55[dir="both"]; 
-A5-> N55[dir="both"];
-N55-> N65; 
-N65-> N55; 
-A6-> N65[dir="both"];
-N65-> N75; 
-N75-> N65; 
-A7-> N75[dir="both"];
-N75-> N85; 
-N85-> N75; 
-A8-> N85[dir="both"];
-N85-> N95; 
-N95-> N85; 
-A9-> N95[dir="both"];
-{ rank = same; U5;N55;N65;N75;N85;N95;} 
+U10[label = "10" width = 1.5 style = filled, fillcolor = thistle2, group =1];  
+U15[label = "15" width = 1.5 style = filled, fillcolor = thistle2, group =1];  
+U5-> U10; 
+U10-> U5; 
+U10-> U15; 
+U15-> U10; 
+A2[label = "2" width = 1.5 style = filled, fillcolor = turquoise3, group =2];  
+A4[label = "4" width = 1.5 style = filled, fillcolor = turquoise3, group =4];  
+A10[label = "10" width = 1.5 style = filled, fillcolor = turquoise3, group =10];  
+A2-> A4; 
+A4-> A2; 
+A4-> A10; 
+A10-> A4; 
+Mt -> U5[dir="both"]; Mt -> A2[dir="both"]; 
+{ rank = same; Mt;A2; A4; A10; } 
+N25 [label = "o" width = 1.5, group =2 ];  
+N410 [label = "s" width = 1.5, group =4 ];  
+N1015 [label = "o" width = 1.5, group =10 ];  
+U5-> N25[dir="both"]; 
+A2-> N25[dir="both"];
+{ rank = same; U5;N25;} 
+U10-> N410[dir="both"]; 
+A4-> N410[dir="both"];
+{ rank = same; U10;N410;} 
+U15-> N1015[dir="both"]; 
+A10-> N1015[dir="both"];
+{ rank = same; U15;N1015;} 
 }

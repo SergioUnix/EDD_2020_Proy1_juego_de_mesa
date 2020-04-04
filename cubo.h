@@ -23,7 +23,7 @@ class Cubo
             this->y=posy;
             this->dato = x;
             ////inicializo mi lista
-            this->usuarios=0;
+            //this->usuarios=0;
          }
 
         Nodo *getNext(){ return next;}
@@ -51,13 +51,6 @@ class Cubo
 
 
 
-        void setLista(User* list){usuarios=list;}
-        User* getLista(){return usuarios;}
-
-        void agregarDatosLista(std::string dato,std::string corX,std::string corY,std::string nombre){
-            usuarios->add_ordenado(dato,corX,corY,nombre);      }
-
-
 
 
 
@@ -79,7 +72,7 @@ class Cubo
         Nodo *z_front; Nodo *z_back;
         int x;    int y;
         T dato;
-        User *usuarios;
+
     };
 
 
@@ -91,23 +84,8 @@ class Cubo
          ano=0;
          mes=0;
 
+
           }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -220,7 +198,7 @@ class Cubo
        }
 
        Nodo* crear_fila(int y){
-           std::string mes="";
+    //       std::string mes="";
           // if(y==1){mes="Enero";}else if(y==2){mes="Febrero";}else if(y==3){mes="Marzo";}else if(y==4){mes="Abril";}else if(y==5){mes="Mayo";}
            //else if(y==6){mes="Junio";}else if(y==7){mes="Julio";}else if(y==8){mes="Agosto";}else if(y==9){mes="Septiembre";}else if(y==10){mes="Octubre";}
            //else if(y==11){mes="Noviembre";}else if(y==12){mes="Diciembre";}
@@ -270,12 +248,13 @@ class Cubo
 
 
 void  insertar_elemento(int x, int y, std::string dato,std::string jugador){
+
         Nodo * nuevo= new Nodo(x,y,dato);
         Nodo* NodoColumna = this->buscar_columna(x);
         Nodo* NodoFila =this->buscar_fila(y);
 
         if(NodoColumna == 0 && NodoFila == 0){
-         std::cout<< "Caso1"<<std::endl;
+     //    std::cout<< "Caso1"<<std::endl;
          NodoColumna= this->crear_columna(x);
          //cout << NodoColumna->getX()<<" "<<NodoColumna->getX()<<endl;
          NodoFila = this->crear_fila(y);
@@ -285,21 +264,21 @@ void  insertar_elemento(int x, int y, std::string dato,std::string jugador){
          return;
 
          }else if(NodoColumna == 0 && NodoFila != 0){
-         std::cout<< "Caso2"<<std::endl;
+     //    std::cout<< "Caso2"<<std::endl;
          NodoColumna= this->crear_columna(x);
          nuevo = this->insertar_ordenado_columna(nuevo,NodoFila);
          nuevo = this->insertar_ordenado_fila(nuevo, NodoColumna);
          return;
 
          }else if(NodoColumna != 0 && NodoFila == 0){
-         std::cout<< "Caso3"<<std::endl;
+    //     std::cout<< "Caso3"<<std::endl;
          NodoFila = this->crear_fila(y);
          nuevo = this->insertar_ordenado_columna(nuevo,NodoFila);
          nuevo = this->insertar_ordenado_fila(nuevo, NodoColumna);
          return;
 
          }else if(NodoColumna != 0 && NodoFila != 0){
-         std::cout<< "Caso4"<<std::endl;
+   //      std::cout<< "Caso4"<<std::endl;
          //cout << NodoColumna->getX()<<" "<<NodoColumna->getDown()->getY()<<"  "<<NodoColumna->getDown()->getX()<<NodoFila->getDown()->getDato() <<endl;
          //cout << NodoFila->getY()<<" "<<NodoFila->getNext()->getX()<<"  "<<NodoFila->getNext()->getY()<<NodoFila->getNext()->getDato()<<endl;
 
@@ -479,6 +458,8 @@ archivo.close();
          int mes;
 
          Nodo * root;
+
+
 
 
 };

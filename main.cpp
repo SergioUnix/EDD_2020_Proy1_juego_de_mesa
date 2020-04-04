@@ -8,6 +8,8 @@
 #include "cubo.h"
 #include <conio.h>
 #include <string.h>
+#include "usuarios.h"
+#include "score.h"
 
 
 using namespace std;
@@ -28,6 +30,8 @@ int tablero_tamano;                     //guardo el tamaño de la matriz Dispersa
 auto jugadores = new BSTree<std::string>{}; //Arbol donde guardo los nombres de los jugadores
 Cola *fichas= new Cola();
 
+Score * scoreboard= new Score();
+
 
 
 /////variables para un juego
@@ -35,6 +39,8 @@ ListaDoble *Lista_jugador1= new ListaDoble();
 ListaDoble *Lista_jugador2= new ListaDoble();
 
 Cubo <string> *tablero= new Cubo<string>();  //tablero del juego
+
+
 
 
 
@@ -96,6 +102,8 @@ Lista_jugador1= new ListaDoble();
 Lista_jugador2= new ListaDoble();
 tablero= new Cubo<string>();
 
+User* fichas_ingresadas= new User(); // control de usuarios
+
 system("cls");
 Lista_jugador1=new ListaDoble(); Lista_jugador2=new ListaDoble(); string Nombre1=""; string Nombre2="";
 Cola *copia_fichas= new Cola();  copia_fichas=fichas;
@@ -128,6 +136,8 @@ do{
 
         switch(opcion){
             case 1:  system("cls");
+            if(Lista_jugador1->getSize()<7){
+            while(fichas->getSize()>0){Lista_jugador1->add_first(copia_fichas->extraer());  if(Lista_jugador1->getSize()>6){break;};   if(fichas->getSize()<1){break;}        }}//siempre mantiene con 7 cada Lista
             cout<<"JUGADOR  1 "<<Nombre1<<endl;
             cout<<"Diccionario: ";
             diccionario->lista_imprimir();
@@ -138,13 +148,14 @@ do{
             cout<<"\n\n Inserte la palabra que desea armar:  ";
             cin>>palabra1;
                         s=palabra1;
-                        if(s=="salir"){opcion=9;}else if(s=="pasar"){  opcion=2; break;}else{opcion=2;}
+                        if(s=="salir"){cout<<"Se termino el Juego \n\n"; opcion=9;  system("pause"); break; }else if(s=="pasar"){  opcion=2; break;}else{opcion=2;}
                         if(diccionario->exist(palabra1)==true){
                                 cout<<"Numero de Letras que ingresara:  ";
                                 cin >>numero;
                                 while(numero>0){
-                                do{cout<<"Coordenada Y  :"; cin>>corY;       }while(((corY>0)!=true) || ((corY<21)!=true));
-                                do{cout<<"Coordenada X  :";  cin>>corX;      }while(((corY>0)!=true) || ((corY<21)!=true));
+                                do{cout<<"Coordenada X  :";  cin>>corX;      }while(((corX>0)!=true) || ((corX<tablero_tamano)!=true));
+                                do{cout<<"Coordenada Y  :"; cin>>corY;       }while(((corY>0)!=true) || ((corY<tablero_tamano)!=true));
+
 
                                 cout<<std::to_string(corY)<<"imprimir"<<(corY<20)<<endl;
                                 cout<<"Coordenada Letra :";
@@ -153,17 +164,25 @@ do{
                                 if(Lista_jugador1->existC(car)==false){cout<<"Caracter no existe en la cola \n\n";  opcion=2; break; } // si no ingresa un caracter que tiene en la lista doble se sale
                                 tablero->insertar_elemento(corX,corY,car,Nombre1);//ingreso caracter a la matriz
                                 tablero->generar_txt();  //grafico la matriz
+                                fichas_ingresadas->add_first(car,corX,corY,Nombre1);
                                 Lista_jugador1->removeC(car);
                                 numero--;corX=-1; corY=-1;
                                 }
-                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n";}
+                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n"; opcion=2; break;   }
 
 
-             opcion=2;
+                    if(Lista_jugador1->getSize()<1){            cout<<"Finalizo el Juego \n\n";  opcion=9;  system("pause");}
+
+
+            opcion=2;
+            cout<<"FINALIZO SU TURNO \n\n";
             system("pause");
 
             break;
             case 2:  system("cls");
+            if(Lista_jugador2->getSize()<7){
+            while(fichas->getSize()>0){Lista_jugador2->add_first(copia_fichas->extraer());  if(Lista_jugador2->getSize()>6){break;};   if(fichas->getSize()<1){break;}        }}//siempre mantiene con 7 cada Lista
+
             cout<<"JUGADOR  2 "<<Nombre2<<endl;
             cout<<"Diccionario:" ;
             diccionario->lista_imprimir();
@@ -175,32 +194,92 @@ do{
             cin>>palabra2;
 
                         v=palabra2;
-                        if(v=="salir"){opcion=9;}else if(v=="pasar"){ opcion=1; break;}else{opcion=1;}
+                        if(v=="salir"){cout<<"Se termino el Juego \n\n"; opcion=9;  system("pause"); break; }else if(v=="pasar"){ opcion=1; break;}else{opcion=1;}
                         if(diccionario->exist(palabra2)==true){
                                 cout<<"Numero de Letras que ingresara:  ";
                                 cin >>numero;
                                 while(numero>0){
-                                do{cout<<"Coordenada Y  :";cin>>corY;    }while(((corY>0)!=true) || ((corY<21)!=true));
-                                do{cout<<"Coordenada X  :";cin>>corX;    }while(((corY>0)!=true) || ((corY<21)!=true));
+                                do{cout<<"Coordenada X  :";cin>>corX;    }while(((corX>0)!=true) || ((corX<tablero_tamano)!=true));
+                                do{cout<<"Coordenada Y  :";cin>>corY;    }while(((corY>0)!=true) || ((corY<tablero_tamano)!=true));
+
+
                                 cout<<"Coordenada Letra :";
                                 cin>>caracter;  car2=caracter;cout<<"\n\n";
 
                                 if(Lista_jugador2->existC(car2)==false){cout<<"Caracter no existe en la cola \n\n"; opcion=1; break; } // si no ingresa un caracter que tiene en la lista
                                 tablero->insertar_elemento(corX,corY,car2,Nombre2);//ingreso caracter a la matriz
                                 tablero->generar_txt();  //grafico la matriz
+                                fichas_ingresadas->add_first(car2,corX,corY,Nombre2);
                                 Lista_jugador2->removeC(car2);
                                 numero--;corX=-1; corY=-1;
                                 }
-                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n";}
+                        }else{cout<<"La palabra no EXISTE en el diccionario \n\n"; opcion=1;   system("pause"); break;  }
 
-            corX=-1; corY=-1;
+
+
+                            if(Lista_jugador2->getSize()<1){            cout<<"Finalizo el Juego \n\n";  opcion=9;  system("pause");}
+
+
             opcion=1;
+             cout<<"FINALIZO SU TURNO \n\n";
             system("pause");
 
             break;
 
         }
             }while(opcion!=9);
+
+
+    ////////////////// Aca ya termino el Juego empiezo a manipular los puntos
+
+    fichas_ingresadas->print();
+
+    fichas_ingresadas->add_first("o",2,5,Nombre2);
+    fichas_ingresadas->add_first("s",4,10,Nombre2);
+    fichas_ingresadas->add_first("o",10,15,Nombre2);
+
+    fichas_ingresadas->add_first("o",5,2,Nombre1);
+    fichas_ingresadas->add_first("s",10,4,Nombre1);
+    fichas_ingresadas->add_first("o",15,10,Nombre1);
+
+    int punteo_jugador1=0;
+    int punteo_jugador2=0;
+
+
+//        for (const auto coordenada : Dobles) {
+ //   posX = coordenada["x"];
+  //  posY = coordenada["y"];
+
+ //   fichas_ingresadas->mulDobles(posX,posY);
+  //  }
+
+  //  for (const auto coordenada : Triple) {
+   // posX = coordenada["x"];
+  //  posY = coordenada["y"];
+  //  fichas_ingresadas->mulTriples(posX,posY);
+  //  }
+
+
+punteo_jugador1=fichas_ingresadas->punteoTotal(Nombre1);
+punteo_jugador2=fichas_ingresadas->punteoTotal(Nombre2);
+scoreboard->add_ordenado(Nombre1,punteo_jugador1);
+scoreboard->add_ordenado(Nombre2,punteo_jugador2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -292,8 +371,8 @@ void menu(){
                         case 7: cout<<"Ingrese el Nombre del jugador\n";
                         cin>>juga;
                             break;
-                        case 8: cout<<"digite su edad"<<endl;
-                        //cin>>ed;
+                        case 8:
+                        scoreboard->generar_txt();
                             break;
                         }
                         system("cls");
@@ -332,6 +411,12 @@ fichas->elementos_default(); //Ingreso fichas a la Cola
 
 
 menu();
+
+//int f=5;
+//int g=7;
+
+//if(((f==4)==true)&&((g==7)==true))cout<<"funciona la igualdad\n\n";
+
 
 
 

@@ -78,6 +78,8 @@ class ListaDoble
 
 
 
+
+
      private:
          bool isEmpty(){return size == 0;}
          int size;
