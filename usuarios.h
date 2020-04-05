@@ -124,13 +124,13 @@ void print()
 
 void User::add_first(std::string dato,int corX,int corY,std::string nombre)
 { int val=0;
-    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
-    if(dato=="d"||dato=="g"){ val=2;  }
-    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
-    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
-    if(dato=="q"){ val=5;  }
-    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
-    if(dato=="z"){ val=10;  }
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;
+    }else if(dato=="d"||dato=="g"){ val=2;
+    }else if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;
+    }else if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;
+    }else if(dato=="q"){ val=5;
+    }else if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;
+    }else if(dato=="z"){ val=10;  }
 
 
 
@@ -159,13 +159,13 @@ void User::add_first(std::string dato,int corX,int corY,std::string nombre)
 
 void User::add_last(std::string dato,int corX,int corY,std::string nombre)
 {int val=0;
-    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
-    if(dato=="d"||dato=="g"){ val=2;  }
-    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
-    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
-    if(dato=="q"){ val=5;  }
-    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
-    if(dato=="z"){ val=10;  }
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;
+    }else if(dato=="d"||dato=="g"){ val=2;
+    }else if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;
+    }else if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;
+    }else if(dato=="q"){ val=5;
+    }else if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;
+    }else if(dato=="z"){ val=10;  }
 
 
     Nodo *n = new Nodo(dato,corX,corY,nombre, val);
@@ -277,14 +277,13 @@ int User::punteoTotal(std::string jugador)
 
 void User::add_ordenado(std::string dato,int corX,int corY,std::string nombre)
 {int val=0;
-    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;  }
-    if(dato=="d"||dato=="g"){ val=2;  }
-    if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;  }
-    if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;  }
-    if(dato=="q"){ val=5;  }
-    if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;  }
-    if(dato=="z"){ val=10;  }
-
+    if(dato=="a"||dato=="e"||dato=="o"||dato=="i"||dato=="s"||dato=="n"||dato=="l"||dato=="r"||dato=="u"||dato=="t"){ val=1;
+    }else if(dato=="d"||dato=="g"){ val=2;
+    }else if(dato=="c"||dato=="b"||dato=="m"||dato=="p"){ val=3;
+    }else if(dato=="h"||dato=="f"||dato=="v"||dato=="y"){ val=4;
+    }else if(dato=="q"){ val=5;
+    }else if(dato=="j"||dato=="ñ"||dato=="x"){ val=8;
+    }else if(dato=="z"){ val=10;  }
 
      Nodo *n = new Nodo(dato,corX,corY,nombre,val);
     Nodo *aux=this->first;

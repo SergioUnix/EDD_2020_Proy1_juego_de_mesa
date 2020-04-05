@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1585965580 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
+1586113257 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
 	<iostream>
 	"json.hpp"
 	"listadoble.h"
@@ -204,7 +204,7 @@
 1585948032 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cubo.h
 	"usuarios.h"
 
-1585963216 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\usuarios.h
+1586113257 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\usuarios.h
 
-1585965651 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\score.h
+1586114072 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\score.h
 

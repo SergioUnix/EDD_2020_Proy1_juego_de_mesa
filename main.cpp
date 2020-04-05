@@ -232,38 +232,38 @@ do{
 
     ////////////////// Aca ya termino el Juego empiezo a manipular los puntos
 
-    fichas_ingresadas->print();
+    fichas_ingresadas->add_first("o",0,1,Nombre1);
+    //fichas_ingresadas->add_first("s",6,10,Nombre1);
+    //fichas_ingresadas->add_first("o",0,15,Nombre1);
 
-    fichas_ingresadas->add_first("o",2,5,Nombre2);
-    fichas_ingresadas->add_first("s",4,10,Nombre2);
-    fichas_ingresadas->add_first("o",10,15,Nombre2);
-
-    fichas_ingresadas->add_first("o",5,2,Nombre1);
-    fichas_ingresadas->add_first("s",10,4,Nombre1);
-    fichas_ingresadas->add_first("o",15,10,Nombre1);
+    //fichas_ingresadas->add_first("o",2,5,Nombre2);
+    //fichas_ingresadas->add_first("s",4,10,Nombre2);
+    //fichas_ingresadas->add_first("o",10,15,Nombre2);
 
     int punteo_jugador1=0;
     int punteo_jugador2=0;
 
 
-//        for (const auto coordenada : Dobles) {
- //   posX = coordenada["x"];
-  //  posY = coordenada["y"];
+    for (const auto coordenada : Dobles) {
+    posX = coordenada["x"];
+    posY = coordenada["y"];
 
- //   fichas_ingresadas->mulDobles(posX,posY);
-  //  }
+    fichas_ingresadas->mulDobles(posX,posY);
+   }
 
-  //  for (const auto coordenada : Triple) {
-   // posX = coordenada["x"];
-  //  posY = coordenada["y"];
-  //  fichas_ingresadas->mulTriples(posX,posY);
-  //  }
+    for (const auto coordenada : Triple) {
+   posX = coordenada["x"];
+    posY = coordenada["y"];
+    fichas_ingresadas->mulTriples(posX,posY);
+    }
 
 
 punteo_jugador1=fichas_ingresadas->punteoTotal(Nombre1);
 punteo_jugador2=fichas_ingresadas->punteoTotal(Nombre2);
+if(fichas_ingresadas->getSize()>0){
 scoreboard->add_ordenado(Nombre1,punteo_jugador1);
 scoreboard->add_ordenado(Nombre2,punteo_jugador2);
+}
 
 
 
@@ -313,7 +313,7 @@ void menu(){
         cout<<"3. - JUGAR -\n"<<endl;
         cout<<"5. Reportes \n"<<endl;
         cout<<"8.salir \n\n"<<endl;
-        cout<<"Ingresa Opcion  \n"<<endl;
+        cout<<"Ingresa Opcion : "<<endl;
         cin>>opcion;
 
         switch(opcion){
@@ -321,8 +321,7 @@ void menu(){
             //cin>>ed;
             analizarDatos("configuracion.json");
             cout<<"Datos Cargados"<<endl;
-            //cout<<"\n";
-            //system("pause");
+
             break;
             case 2: system("cls");
             cout<<"Ingresa nombre Jugador"<<endl;
@@ -347,7 +346,7 @@ void menu(){
                        cout<<"7. Historial de Puntaje por Jugador: Lista Simple Ordenada "<<endl;
                        cout<<"8. Scoreboard : Lista Simple Ordenada"<<endl;
                        cout<<"9. SALIR DEL MENU"<<endl<<endl;
-                       cout<<"Ingresar Opcion:"<<endl;
+                       cout<<"Ingresar Opcion : "<<endl;
                        cin>>rep;
                         switch(rep){
                         case 1:
@@ -368,8 +367,18 @@ void menu(){
                         case 6:
                         jugadores->Post();
                             break;
-                        case 7: cout<<"Ingrese el Nombre del jugador\n";
-                        cin>>juga;
+                        case 7:     system("cls");
+                            while(true){
+                            cout<<" Seleccionar Jugadores "<<endl;
+                            jugadores->ListaUsuarios();
+                            cout<<"Ingresa nombre del Jugador "<<endl;
+                            cin>>juga;
+                            if(jugadores->search(juga)==true){
+                            scoreboard->generar_txtScore(juga);
+                            break; }
+                            system("cls");
+                            }
+
                             break;
                         case 8:
                         scoreboard->generar_txt();

@@ -102,7 +102,7 @@ std::string grafic()
         std::string nodos="";
         std::string direccion="";
         while(node!=0){
-             nodos=nodos+"node"+std::to_string(index) + "[label = \"{<n>" +node->getDato()+ ","+ std::to_string(node->getPunteo())+" Pts"+"| <p> }\"];";
+             nodos=nodos+"node"+std::to_string(index) + "[label = \"{<n>" +node->getDato()+ ", "+ std::to_string(node->getPunteo())+" Pts"+"| <p> }\"];";
              direccion=direccion+"node"+std::to_string(index)+":p -> node"+std::to_string(index+1)+":n;";
              index=index+1;
              node=node->getNext();
@@ -116,17 +116,64 @@ std::string grafic()
 
 }
 
-
 void generar_txt(){
 std::string texto= grafic();
 std::ofstream archivo;
-archivo.open("listaSimple.txt", std::ios:: out);
+archivo.open("listaSimpleScoreBoard.txt", std::ios:: out);
 
 archivo<<texto;
 archivo.close();
 
-        std::string sentencia="dot -Tpng listaSimple.txt -o listaSimple.png";
-        std::string sentencia2="start listaSimple.png";
+        std::string sentencia="dot -Tpng listaSimpleScoreBoard.txt -o listaSimpleScoreBoard.png";
+        std::string sentencia2="start listaSimpleScoreBoard.png";
+        system(sentencia.c_str());
+        system(sentencia2.c_str());
+}
+
+
+
+
+
+
+//////////// Esta parte genera el reporte de scoreboard dada un jugador
+std::string grafic_Score(std::string jugador)
+{
+        std::string linea1=" digraph G {";
+        std::string linea2="nodesep=.02;";
+        std::string linea3="rankdir=LR;";
+        std::string linea4="node [shape=record,width=.1,height=.1];"   ;
+        std::string linea6="node [width =1.5];";
+         Nodo *node=this->first;
+        int index=1;
+        std::string nodos="";
+        std::string direccion="";
+        while(node!=0){
+                if(node->getDato()==jugador){
+             nodos=nodos+"node"+std::to_string(index) + "[label = \"{<n>" +node->getDato()+ ", "+ std::to_string(node->getPunteo())+" Pts"+"| <p> }\"];";
+             direccion=direccion+"node"+std::to_string(index)+":p -> node"+std::to_string(index+1)+":n;";
+               index=index+1;
+                }
+
+             node=node->getNext();
+
+        }
+           nodos=nodos +"node"+to_string(index) + "[label = \"null\",width=0.5];";
+           string lineafinal="}";
+           string grafo= linea1+linea2+linea3+linea4+linea6+nodos+direccion+lineafinal;
+           return grafo;
+}
+
+
+void generar_txtScore(std::string jugador){
+std::string texto= grafic_Score(jugador);
+std::ofstream archivo;
+archivo.open("listaSimpleScoreUsuario.txt", std::ios:: out);
+
+archivo<<texto;
+archivo.close();
+
+        std::string sentencia="dot -Tpng listaSimpleScoreUsuario.txt -o listaSimpleScoreUsuario.png";
+        std::string sentencia2="start listaSimpleScoreUsuario.png";
         system(sentencia.c_str());
         system(sentencia2.c_str());
 
@@ -212,7 +259,7 @@ void  Score::add_ordenado(std::string dato,int punteo)
 
         while(true){
 
-                if(this->comparar(aux->getDato(),n->getDato())>0){
+                if(punteo>aux->getPunteo()){
                 //std::cout<<"comparo  ----------------------------------- "<<this->comparar(aux->getDato(),n->getDato())<<"---"<<aux->getDato()<<"--"<<n->getDato()<<this->getSize()<<std::endl;
                // std::cout<<"comparo  ----------------------------------- "<<aux->getDato()<<std::endl;
 
