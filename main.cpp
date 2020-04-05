@@ -145,7 +145,7 @@ do{
             cout<<"Fichas Disponibles   :";
             cout<< Lista_jugador1->lista_imprimir()<<endl<<endl;
             //Lista_jugador1->generar_txt();
-            cout<<"\n\n Inserte la palabra que desea armar:  ";
+            cout<<"\n\nInserte la palabra que desea armar:  ";
             cin>>palabra1;
                         s=palabra1;
                         if(s=="salir"){cout<<"Se termino el Juego \n\n"; opcion=9;  system("pause"); break; }else if(s=="pasar"){  opcion=2; break;}else{opcion=2;}
@@ -157,7 +157,7 @@ do{
                                 do{cout<<"Coordenada Y  :"; cin>>corY;       }while(((corY>0)!=true) || ((corY<tablero_tamano)!=true));
 
 
-                                cout<<std::to_string(corY)<<"imprimir"<<(corY<20)<<endl;
+                               // cout<<std::to_string(corY)<<"imprimir"<<(corY<20)<<endl;
                                 cout<<"Coordenada Letra :";
                                 cin>>caracter;    car=caracter; cout<<"\n\n";
 
@@ -190,7 +190,7 @@ do{
             cout<<"Fichas Disponibles   :";
             cout<<Lista_jugador2->lista_imprimir();
             //Lista_jugador2->generar_txt();
-            cout<<"\n\n Ingresar la palabra que desea armar: ";
+            cout<<"\n\nIngresar la palabra que desea armar: ";
             cin>>palabra2;
 
                         v=palabra2;
@@ -232,7 +232,7 @@ do{
 
     ////////////////// Aca ya termino el Juego empiezo a manipular los puntos
 
-    fichas_ingresadas->add_first("o",0,1,Nombre1);
+    //fichas_ingresadas->add_first("o",0,1,Nombre1);
     //fichas_ingresadas->add_first("s",6,10,Nombre1);
     //fichas_ingresadas->add_first("o",0,15,Nombre1);
 
