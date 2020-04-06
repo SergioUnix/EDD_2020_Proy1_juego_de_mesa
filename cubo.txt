@@ -4,26 +4,6 @@ Mt[ label = "Raiz", width = 1.5, style = filled, fillcolor = darkolivegreen3, gr
 /*nodos vacíos, necesarios para anular la ubicación de nodo predeterminada de graphiz  */ 
  e0[ shape = point, width = 0 ];  
 e1[ shape = point, width = 0 ];   
-U5[label = "5" width = 1.5 style = filled, fillcolor = thistle2, group =1];  
-A5[label = "5" width = 1.5 style = filled, fillcolor = turquoise3, group =5];  
-A6[label = "6" width = 1.5 style = filled, fillcolor = turquoise3, group =6];  
-A7[label = "7" width = 1.5 style = filled, fillcolor = turquoise3, group =7];  
-A5-> A6; 
-A6-> A5; 
-A6-> A7; 
-A7-> A6; 
-Mt -> U5[dir="both"]; Mt -> A5[dir="both"]; 
-{ rank = same; Mt;A5; A6; A7; } 
-N55 [label = "o" width = 1.5, group =5 ];  
-N65 [label = "s" width = 1.5, group =6 ];  
-N75 [label = "o" width = 1.5, group =7 ];  
-U5-> N55[dir="both"]; 
-A5-> N55[dir="both"];
-N55-> N65; 
-N65-> N55; 
-A6-> N65[dir="both"];
-N65-> N75; 
-N75-> N65; 
-A7-> N75[dir="both"];
-{ rank = same; U5;N55;N65;N75;} 
+Mt -> [dir="both"]; Mt -> [dir="both"]; 
+{ rank = same; Mt;} 
 }

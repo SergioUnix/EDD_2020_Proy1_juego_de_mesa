@@ -72,4 +72,21 @@ cpu->generar_txt();
 
 
 
+
+ListaDoble *dic= new ListaDoble();
+dic->add_ordenado("Arturo");
+dic->add_ordenado("Jose");
+dic->add_ordenado("Manuel");
+cout<<dic->lista_imprimir()<<"   "<<dic->getSize()<<endl;
+cout<<"-----------------------"<<endl;
+dic->remove_at(0);
+cout<<dic->lista_imprimir()<<" despues de eliminar el primer elemento  "<<dic->getSize()<<endl;
+dic->remove_at(0);
+cout<<dic->lista_imprimir()<<" despues de eliminar el segundo elemento   "<<dic->getSize()<<endl;
+dic->remove_at(0);
+ system("pause");
+
+
+
+
 #endif // MAIN_AUXILIAR_H_INCLUDED

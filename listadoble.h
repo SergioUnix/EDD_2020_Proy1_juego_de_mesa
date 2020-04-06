@@ -250,7 +250,7 @@ std::string ListaDoble::lista_imprimir()
         int x = 0;
         while(iterador!=0)
         {
-            result =result+ iterador->getDato()+" --";
+            result =result+ iterador->getDato()+" -- ";
             iterador = iterador->getNext();
             x++;
         }
@@ -308,8 +308,9 @@ void ListaDoble::remove_at(int index)
 {
         if(index >= 0 && index < this->size)
     {
+        if(((index == 0)==true) && ((this->size==1)==true)){this->first =0; this->last=0;       this->size--;    return;}
         if(index == 0){Nodo *aux = this->first->getNext();  aux->setBefore(0); this->first =aux;       this->size--;    return;}
-        if(index == this->size-1) {Nodo *aux = this->last->getBefore();  aux->setNext(0); this->last=aux;       this->size--;             return;}
+        if(index == this->size-1) {Nodo *aux = this->last->getBefore();  aux->setNext(0);  this->last=aux;      this->size--;             return;}
         Nodo *aux = this->first;
         int x = 0;
         while(aux!=0)

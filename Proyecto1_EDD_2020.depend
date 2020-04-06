@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586113257 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
+1586151771 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
 	<iostream>
 	"json.hpp"
 	"listadoble.h"
@@ -12,6 +12,9 @@
 	<string.h>
 	"usuarios.h"
 	"score.h"
+	<clocale>
+	<locale.h>
+	<windows.h>
 
 1585077743 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\json.hpp
 	<algorithm>
@@ -181,7 +184,7 @@
 	<limits>
 	<type_traits>
 
-1585930287 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
+1586145415 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\listadoble.h
 	<string.h>
 	<fstream>
 
@@ -189,7 +192,7 @@
 	<string.h>
 	<fstream>
 
-1585939001 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
+1586151725 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
 
 1585609837 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\arbol.h
 	"listasimple.h"
@@ -206,5 +209,5 @@
 
 1586113257 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\usuarios.h
 
-1586114072 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\score.h
+1586117319 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\score.h
 

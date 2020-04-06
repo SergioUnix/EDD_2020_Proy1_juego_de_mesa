@@ -31,6 +31,8 @@ public:
 	bool exist(string cadena);
 	int valor(string cadena);
 	int getSize();
+    string cadena="omadrhtiicealotgcdeibocnaordeieoflguiansehjrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
+    void barajear();
 
 
 };
@@ -157,9 +159,10 @@ bool Cola::vacia()
 }
 void Cola::elementos_default()
 {
+
     // string cadena="ALOTGCDEIBOCNAORDEIEOFLGUIANSEÑHOMADRHTIICEJRLSUIONRALMEASNOAEDOPSNUOECQARTSEOBPUSTUESAVEEADXAYZA";
-     //string cadena="alotgcdeibocnaordeieoflguianse;homadrhtiicejrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
-     string cadena="osoalotosogcdesodaibocsodanaoraguadeieaaguaoflguiansehomadrhtiicejrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
+     //string cadena="alotgcdeibocnaordeieoflguiansehomadrhtiicejrlsuionralmeasnoaedopsnuoecqartseobpustuesaveeadxayza";
+
      int n1 = cadena.length();
      char char_a[n1 + 1];
      strcpy(char_a, cadena.c_str());
@@ -180,6 +183,53 @@ void Cola::elementos_default()
 
 
 }
+
+
+
+
+
+
+
+////Barajear las letras
+void Cola::barajear()
+{   Nodo *aux = raiz;
+    string a1="";
+    string a2="";
+    string a3="";
+
+    int iterador=1;  ////se menea de 1 a 3
+    while (aux != NULL)
+    {
+    if(iterador==1){a1=a1+aux->letra; iterador= 2;};
+    if(iterador==2){a2=a2+aux->letra; iterador= 3;};
+    if(iterador==3){a3=a3+aux->letra; iterador= 1;};
+
+    aux = aux->sig;
+    }
+
+    string total=a1+a2+a3;
+    cadena="";
+    cadena=total;
+
+    raiz=NULL;
+    fondo=NULL;
+aux=NULL;
+
+    elementos_default();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
