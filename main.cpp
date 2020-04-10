@@ -381,7 +381,7 @@ void menu(){
                         diccionario->generar_txt();
                             break;
                         case 2:
-                        //fichas->barajear();
+                       // fichas->barajear();
 
                         fichas->generar_txt();
                             break;

@@ -211,9 +211,15 @@ void Cola::barajear()
     cadena="";
     cadena=total;
 
-    raiz=NULL;
-    fondo=NULL;
-aux=NULL;
+
+ Nodo *reco = raiz;
+    Nodo *bor;
+    while (reco != NULL)
+    {
+        bor = reco;
+        reco = reco->sig;
+        delete bor;
+    }
 
     elementos_default();
 

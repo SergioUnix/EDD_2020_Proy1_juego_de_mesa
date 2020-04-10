@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1586151771 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
+1586152707 source:c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\main.cpp
 	<iostream>
 	"json.hpp"
 	"listadoble.h"
@@ -192,7 +192,7 @@
 	<string.h>
 	<fstream>
 
-1586151725 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
+1586153196 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\cola.h
 
 1585609837 c:\users\admin\desktop\estructuras\1er semestre 2020\proyecto1_edd_2020\arbol.h
 	"listasimple.h"
